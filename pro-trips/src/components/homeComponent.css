@@ -1,0 +1,9 @@
+.home
+{
+    height:800px;
+    width:1500px;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
