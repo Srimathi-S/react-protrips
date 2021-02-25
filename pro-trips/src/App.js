@@ -12,27 +12,26 @@ class App extends Component
     super(props);
     this.state={
       tripList:[],
-      redirect:false
-    }
+    };
+    this.redirect=false;
   }
   pushElements=(event,tourDetails)=>{
     console.log(event);
     console.log(tourDetails);
     console.log("Coming here");
-    let modifiedList=this.state.tourList;
+    let modifiedList=this.state.tripList;
     modifiedList.push(tourDetails);
+    this.redirect=true;
     this.setState({
       tripList:modifiedList,
-      redirect:true
     });
   }
   render()
   {
-  console.log(this.props.history);
   return (
     <div>
       <Router>
-      {(this.state.redirect===true)?<Redirect to='/listOfTrips'/>:<Redirect to='/'/>}
+      {(this.redirect===true)?(<Redirect to='/listOfTrips'/>):<Redirect to='/'/>}
       <Switch>
         <Route exact path='/'><HomeComponent/></Route>
         <Route path='/addTrip'><AddTripComponent  pushElements={(tourDetails)=>this.pushElements(this,tourDetails)}/></Route>
